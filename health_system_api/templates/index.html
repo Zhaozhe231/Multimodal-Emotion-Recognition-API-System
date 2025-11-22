@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Welcome to Health Emotion Analysis System</h2>
+            </div>
+            <div class="card-body">
+                <p class="lead">This system analyzes voice and facial expressions to determine emotional states that may indicate health conditions.</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body text-center">
+                                <h3>Voice Analysis</h3>
+                                <p>Upload audio files to analyze voice emotional patterns</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="card-body text-center">
+                                <h3>Face Analysis</h3>
+                                <p>Upload images to analyze facial emotional expressions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('analyze_form') }}" class="btn btn-primary btn-lg">Start Analysis</a>
+                    <a href="{{ url_for('config_form') }}" class="btn btn-outline-secondary btn-lg ms-2">Configure System</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

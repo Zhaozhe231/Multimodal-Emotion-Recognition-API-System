@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Analysis Results</h2>
+            </div>
+            <div class="card-body">
+                {% if result %}
+                    <div class="alert alert-info">
+                        <h4>Overall Assessment</h4>
+                        <p class="lead">{{ result.overall_assessment }}</p>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        {% if result.voice_emotion %}
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header">Voice Analysis</div>
+                                <div class="card-body">
+                                    <p><strong>Detected Emotion:</strong> {{ result.voice_emotion }}</p>
+                                    <p><strong>Confidence:</strong> {{ "%.2f"|format(result.voice_confidence * 100) }}%</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        {% if result.face_emotion %}
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header">Face Analysis</div>
+                                <div class="card-body">
+                                    <p><strong>Detected Emotion:</strong> {{ result.face_emotion }}</p>
+                                    <p><strong>Confidence:</strong> {{ "%.2f"|format(result.face_confidence * 100) }}%</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    {% if result.recommendations %}
+                    <div class="mt-4">
+                        <h4>Recommendations</h4>
+                        <ul class="list-group">
+                            {% for rec in result.recommendations %}
+                            <li class="list-group-item">{{ rec }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="text-center mt-4">
+                        <a href="{{ url_for('analyze_form') }}" class="btn btn-primary">New Analysis</a>
+                    </div>
+                {% else %}
+                    <div class="alert alert-danger">
+                        <p>No analysis results available. Please try again.</p>
+                    </div>
+                    <div class="text-center">
+                        <a href="{{ url_for('analyze_form') }}" class="btn btn-primary">Return to Analysis Form</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

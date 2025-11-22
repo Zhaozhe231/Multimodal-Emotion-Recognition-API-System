@@ -1,0 +1,19 @@
+ONNX model accuracy on test set: 92.50%
+
+Classification Report:
+                precision    recall  f1-score   support
+
+  female_angry       0.96      0.99      0.97        96
+   female_calm       0.91      0.94      0.92        96
+female_fearful       0.91      0.93      0.92        96
+  female_happy       0.96      0.91      0.93        96
+    female_sad       0.88      0.86      0.87        96
+    male_angry       1.00      0.90      0.95        96
+     male_calm       0.95      0.96      0.95        96
+  male_fearful       0.92      0.93      0.92        96
+    male_happy       0.89      0.95      0.92        96
+      male_sad       0.89      0.90      0.89        96
+
+      accuracy                           0.93       960
+     macro avg       0.93      0.93      0.93       960
+  weighted avg       0.93      0.93      0.93       960

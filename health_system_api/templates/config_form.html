@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">System Configuration</h2>
+            </div>
+            <div class="card-body">
+                <p>Adjust the weights used by the expert system to balance voice and facial analysis.</p>
+                
+                <form action="{{ url_for('submit_config') }}" method="POST">
+                    <div class="mb-3">
+                        <label for="voice_weight" class="form-label">Voice Analysis Weight</label>
+                        <input type="range" class="form-range" min="0" max="1" step="0.1" id="voice_weight" name="voice_weight" value="{{ current_weights.voice_weight }}" oninput="updateWeightValue('voice_weight')">
+                        <div class="text-center">
+                            <span id="voice_weight_value">{{ current_weights.voice_weight }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="face_weight" class="form-label">Face Analysis Weight</label>
+                        <input type="range" class="form-range" min="0" max="1" step="0.1" id="face_weight" name="face_weight" value="{{ current_weights.face_weight }}" oninput="updateWeightValue('face_weight')">
+                        <div class="text-center">
+                            <span id="face_weight_value">{{ current_weights.face_weight }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary">Save Configuration</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function updateWeightValue(id) {
+        const slider = document.getElementById(id);
+        const value = document.getElementById(id + '_value');
+        value.textContent = slider.value;
+    }
+    
+    // Initialize the display values
+    document.addEventListener('DOMContentLoaded', function() {
+        updateWeightValue('voice_weight');
+        updateWeightValue('face_weight');
+    });
+</script>
+{% endblock %}

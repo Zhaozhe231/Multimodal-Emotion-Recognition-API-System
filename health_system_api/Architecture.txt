@@ -1,0 +1,33 @@
+
+
++----------------------- health system api server----------------------+
+|   health system api server -> pro judgement(sample version)                             
+|      │                                                   
+|      ├──face emotion model    (detection face emotion)
+|      │                                                   
+|      ├──speech emotion model (detection speech emotion)                                  
+|      │   
+|     	
+
++-------------------------↓--------------------------------+
+
++-----------------------raspberry pi server----------------------+
+|                                                          
+|   [chatbot]                                   
+|      │                                                   
+|      ├──（TTS/ASR）←→ chatbot model      
+|      │                                                   
+|      ├──GPIO contel  interface                                  
+|      │   └── different sensors         
+|      │                                                   
+|      └──api interface     	                             
+|           ├── health system api Calling interface
+|           ├── weather interface
+|           ├── diy interface
+|                                      
+|           
+|                                  
+|                                                          
++-------------------------↓--------------------------------+
+                          
+            Mental state monitoring results → desktop pet interaction feedback
